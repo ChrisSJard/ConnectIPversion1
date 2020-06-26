@@ -1,0 +1,231 @@
+/* ------------------------------------------------------------------------*/
+*{
+  box-sizing:border-box;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+  padding:0;
+}
+
+section{
+    margin: 0;
+    padding: 0;
+}
+footer {
+  position:absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+}
+
+.col-sm{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.nav ul {
+    margin: 0;
+}
+
+.nav li {
+    display: inline;
+}
+
+.nav a {
+    display: inline-block;
+    padding: .5em;
+    color: white;
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: lighter;
+    border-bottom: 1px solid rgba(255, 255, 255, .3)
+}
+
+
+.base-header{
+    background: rgb(0,116,42);
+    background: linear-gradient(240deg, rgba(0,116,42,0.6561975131849616) 35%, rgba(255,255,255,1) 83%);
+    border-bottom: 1px solid rgba(0,116,42, .3)
+}
+
+
+.home-header {
+    background-image: url("../UI/images/oldones/bannerGrlg.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 30px;
+}
+
+.home-header:hover .overlay{
+    opacity: 1;
+    transition: 0.5s ease-in;
+}
+
+.banner{
+    position: relative;
+    z-index: 0;
+}
+
+.overlay{
+    opacity: 0;
+    transition: 0.5s ease-out;
+}
+
+.banner:hover .overlay{
+    opacity: 1;
+    transition: 0.5s ease;
+}
+
+.banner h4{
+    color: ghostwhite;
+}
+
+.homepage-circle-info-1{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    font:bold 10px sans-serif;
+    text-align: center;
+    background-color: white;
+    border-radius: 50%;
+    padding: 30px;
+    -webkit-box-shadow: 4px 6px 21px -2px rgba(138,204,235,1);
+    -moz-box-shadow: 4px 6px 21px -2px rgba(138,204,235,1);
+    box-shadow: 4px 6px 21px -2px rgba(138,204,235,1);
+    z-index: 0;
+}
+
+.homepage-circle-info-2{
+    position: absolute;
+    left: 70%;
+    top: 50%;
+    font:bold 10px sans-serif;
+    text-align: center;
+    background-color: white;
+    border-radius: 50%;
+    padding: 30px;
+    -webkit-box-shadow: 4px 6px 21px -2px rgba(138,204,235,1);
+    -moz-box-shadow: 4px 6px 21px -2px rgba(138,204,235,1);
+    box-shadow: 4px 6px 21px -2px rgba(138,204,235,1);
+    z-index: 0;
+}
+
+.material-icons.md-36{
+    font-size:48px;
+    color: black;
+}
+
+.searchMatches{
+    background: rgb(77,182,172);
+    background: radial-gradient(circle, rgba(77,182,172,1) 21%, rgba(109,195,187,1) 40%, rgba(255,255,255,1) 100%);
+    border-top: 2px solid rgb(77,182,172);
+    border-bottom: 2px solid rgb(77,182,172);
+    padding-bottom: 60px;
+    padding-top: 60px;
+}
+
+.searchMatches i{
+    display: block;
+}
+
+.searchMatches ul{
+    list-style-type: none;
+}
+
+.academics{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-right: 4px solid #4db6ac;
+}
+
+.industries{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-left: 4px solid #4db6ac;
+}
+
+.btn-success{
+    border: 2px solid ghostwhite;
+    color:ghostwhite;
+}
+
+.joinCommunity{
+    position:relative;
+    background-image: url("../UI/images/communityBanner.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 130px;
+    padding-top: 130px;
+    z-index: 0;
+    font-family: 'Special Elite', cursive;
+}
+
+.joinCommunity a{
+    text-decoration: none;
+}
+
+.jcText1{
+    position: absolute;
+    left: 5%;
+    bottom: 20%;
+    z-index: 0;
+    color: rgb(79, 79, 79);
+}
+
+.jcText2{
+    position: absolute;
+    left: 45%;
+    bottom: 10%;
+    z-index: 0;
+    color: rgb(79, 79, 79);
+}
+
+.slogan{
+    text-align: center;
+    padding-bottom: 30px;
+    color: ghostwhite;
+}
+
+.slogan .btn-outline-info{
+    border-radius: 50%;
+    background-color: rgb(72,209,204);
+    border: 2px solid ghostwhite;
+}
+
+.footer-content{
+    background: rgb(77,182,172);
+    background: radial-gradient(circle, rgba(77,182,172,1) 21%, rgba(109,195,187,1) 40%, rgba(255,255,255,1) 100%);
+    border-bottom: 2px solid rgb(77,182,172);
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.footsec1{
+    border-right: 1px solid green;
+}
+
+.footsec2{
+    border-right: 1px solid green;
+}
+.footsec3{
+    border-right: 1px solid green;
+}
+
+

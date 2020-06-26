@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    {% if messages %}
+            {% for message in messages %}
+                <div class = "alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+    {% endif %}
+    <div class="container">
+        <img class ="logo" src="{% static 'UI/images/logo.png' %}" alt="logo" style= "width:140px; height:auto; visibility: visible;">
+        <h1>Welcome!</h1>
+        <div class="content-section">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class = "form-group">
+                    <legend class="border-bottom mb-4">Login to your account.</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Log In</button>
+                </div>
+            </form>
+            <div>
+                <div class = "border-top pt-3">
+                    <small class = "text-muted">
+                         Don't have an account? <a class="ml-2" href="{% url 'account:account-register' %}">Create an account.</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+{% endblock content %}

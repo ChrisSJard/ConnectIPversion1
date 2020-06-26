@@ -1,0 +1,33 @@
+{% extends 'home-index.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="searchMatches">
+        <div class="row">
+            <div class="col-sm">
+                <div class="academics">
+                    <h4>Find Universities<br>&<br>Research Institutions</h4>
+                    <ul>
+                        <li><i class="material-icons md-36">school</i></li>
+                        <li><a href="{% url 'searchApi:searchApi_academic-page' %}" class="btn btn-success" role="button">Search Institutes</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="industries">
+                    <h4>Find Industries<br>&<br>Developers</h4>
+                    <ul>
+                        <li><i class="material-icons md-36">location_city</i></li>
+                        <li><a href="{% url 'searchApi:searchApi_industrial-page' %}" class="btn btn-success " role="button">Search Industries</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="joinCommunity">
+        <a href="{% url 'account:account-register' %}"><h3 class="jcText1">Make an impact</h3></a>
+        <a href="{% url 'account:account-register' %}"><h3 class="jcText2">Join the Community</h3></a>
+        <br><br>
+    </div>
+{% endblock content %}
+

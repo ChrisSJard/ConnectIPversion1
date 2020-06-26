@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="profile-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-5">
+                    <div class="profile-image-block">
+                       <img class="account-img" src="{{ user.profile.image.url }}" alt="profile_pic">
+                    </div>
+                </div>
+                <div class="col-7 mt-4">
+                    <h3 class="account-heading">Name              : {{ user.first_name }} {{ user.last_name }}</h3>
+                    <h3 class="account-heading">Location          : {{ user.profile.location }}  </h3>
+                    <h3 class="account-heading">Qualifications    : {{ user.profile.qualification }}  </h3>
+                    <h3 class="account-heading">Relevant research : {{ user.profile.research }}  </h3>
+                    <a href="{% url 'account:account-ipAssessment' %}" class="btn btn-success" role="button">Start Project</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-top pt-2">
+        <div class="container">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="home" aria-selected="true">Projects</a>
+                </li>
+                 <li class="nav-item" role="presentation">
+                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#community" role="tab" aria-controls="profile" aria-selected="false">Community</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="projects" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="row">
+                        <div class="col">
+                            <a href="#">
+                                <img class ="logo" src="{% static 'Searchapi/images/stent.jpg' %}" alt="logo">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#">
+                                <img class ="logo" src="{% static 'Searchapi/images/Opticaltweezers.jpg' %}" alt="logo">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#">
+                                <img class ="logo" src="{% static 'Searchapi/images/CRISPR.jpg' %}" alt="logo">
+                            </a>
+                        </div>
+                  </div>
+              </div>
+              <div class="tab-pane fade" id="community" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="row">
+                        <div class="col">
+                            <a href="#">
+                                <img class ="logo" src="{% static 'Searchapi/images/HIVmutations.jpg' %}" alt="logo">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#">
+                                <img class ="logo" src="{% static 'Searchapi/images/Microtubules.jpg' %}" alt="logo">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#">
+                                <img class ="logo" src="{% static 'Searchapi/images/Rice.jpg' %}" alt="logo">
+                            </a>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col">
+                            <a href="#">
+                                <img class ="logo" src="{% static 'Searchapi/images/stent.jpg' %}" alt="logo">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#">
+                                <img class ="logo" src="{% static 'Searchapi/images/Opticaltweezers.jpg' %}" alt="logo">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#">
+                                <img class ="logo" src="{% static 'Searchapi/images/CRISPR.jpg' %}" alt="logo">
+                            </a>
+                        </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% load static %}
+
+<header class="base-header">
+    <nav class="nav main-nav">
+        <a href="/">
+            <img class="logo" src="{% static 'UI/images/logo.png' %}" alt="logo" style="width:150px;height:90px;">
+        </a>
+        <ul>
+            <li><a href="{% url 'UI:ui_about-page' %}">ABOUT</a></li>
+            <li><a href="{% url 'UI:ui_services-page' %}">SERVICES</a></li>
+            <li>
+                <div class="menu-wrap">
+                    <input type="checkbox" class="toggleMenu">
+                    <div class="hamburger">
+                        <div></div>
+                    </div>
+                    <div class="menu">
+                        <div>
+                            <div>
+                                {% if user.is_authenticated %}
+                                    <ul>
+                                        <li><a href="{% url 'account:account-userprofile' %}">PROFILE</a></li>
+                                        <li><a href="{% url 'searchApi:searchApi_industrial-page' %}">INDUSTRIAL</a></li>
+                                        <li><a href="{% url 'searchApi:searchApi_academic-page' %}">ACADEMIC</a></li>
+                                        <li><a href="{% url 'UI:ui_contact-page' %}">CONTACT</a></li>
+                                        <li><a href="{% url 'UI:ui_FAQ-page' %}">FAQ</a></li>
+                                        <li><a href="{% url 'account:account-logout' %}">LOG OUT</a></li>
+                                    </ul>
+                                {% else %}
+                                    <ul>
+                                        <li><a href="{% url 'account:account-login' %}">LOGIN</a></li>
+                                        <li><a href="{% url 'searchApi:searchApi_industrial-page' %}">INDUSTRIAL</a></li>
+                                        <li><a href="{% url 'searchApi:searchApi_academic-page' %}">ACADEMIC</a></li>
+                                        <li><a href="{% url 'UI:ui_contact-page' %}">CONTACT</a></li>
+                                        <li><a href="{% url 'UI:ui_FAQ-page' %}">FAQ</a></li>
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
