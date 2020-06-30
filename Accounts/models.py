@@ -14,6 +14,24 @@ class Profile(models.Model):
         return f'{self.account.username} Profile'
 
 
+class DBPatent(models.Model):
+    publicationNumber = models.CharField(max_length=100)
+    title = models.CharField(max_length=500)
+    publicationDate = models.DateField()
+    license = models.CharField(max_length=100, blank=True)
+    publicationOwner = models.CharField(max_length=100, blank=True)
+    region = models.CharField(max_length=100, blank=True)
+    publicationUsage = models.CharField(max_length=100, blank=True)
+    publicationType = models.CharField(max_length=100, blank=True)
+    stageComplete = models.BooleanField()
+    stageSelected = models.BooleanField()
+    stageApproved = models.BooleanField()
+    creator = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return self.publicationNumber
+
+
 class PatentSummary(models.Model):
     patentStatus = [('published', 'Published/Pending'),
                     ('granted', 'Granted'),
@@ -81,6 +99,11 @@ class PatentSummary(models.Model):
         ('unt', 'Unclear if anyone is working on this specific technology for the application protected by the patent'),
         ('other', 'Other'),
     ]
+    choiceOptions = [
+        ('yes', 'Yes'),
+        ('no', 'No'),
+        ('unknown', 'Unknown'),
+    ]
 
     # account = models.M=ForeignKey(User, on_delete=models.CASCADE)
     startDate = models.DateTimeField()
@@ -132,19 +155,19 @@ class PatentSummary(models.Model):
     dev3 = models.CharField(max_length=100)
     # Competitive landscape
     # commercialAvailable = small list of options, string word
-    comp1 = models.BooleanField()
+    comp1 = models.CharField(max_length=8, choices=choiceOptions)
     # patentSolve = small list of options, string word
-    comp2 = models.BooleanField()
+    comp2 = models.CharField(max_length=8, choices=choiceOptions)
     # patentOverlap = small list of options, string word
-    comp3 = models.BooleanField()
+    comp3 = models.CharField(max_length=8, choices=choiceOptions)
     # patentAffect = string of words
     comp4 = models.CharField(max_length=100)
     # currentSol = small list of options, string word
-    comp5 = models.BooleanField()
+    comp5 = models.CharField(max_length=8, choices=choiceOptions)
     # levelImprovement = small list of options, string word
     comp6 = models.CharField(max_length=12, choices=lvlImp)
     # costSaving = small list of options, string word
-    comp7 = models.BooleanField()
+    comp7 = models.CharField(max_length=8, choices=choiceOptions)
     # Validation
     # scientific = small list of options, string word
     val1 = models.CharField(max_length=200, choices=scientific)
@@ -159,3 +182,4 @@ class PatentSummary(models.Model):
     exp = models.CharField(max_length=5, choices=rating)
     # feedback = string of words
     feedback = models.TextField(max_length=300)
+

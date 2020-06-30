@@ -15,7 +15,7 @@
                     <h3 class="account-heading">Location          : {{ user.profile.location }}  </h3>
                     <h3 class="account-heading">Qualifications    : {{ user.profile.qualification }}  </h3>
                     <h3 class="account-heading">Relevant research : {{ user.profile.research }}  </h3>
-                    <a href="{% url 'account:account-ipAssessment' %}" class="btn btn-success" role="button">Start Project</a>
+                    <a href="{% url 'account:account-ipAssessment' %}" class="btn btn-success" role="button">Continue Project</a>
                 </div>
             </div>
         </div>
@@ -36,16 +36,34 @@
                         <div class="col">
                             <a href="#">
                                 <img class ="logo" src="{% static 'Searchapi/images/stent.jpg' %}" alt="logo">
+                                <p>{{ pat1.title }}</p>
+                                <form method="POST">{% csrf_token %}
+                                    <input type="hidden" name="user_id" value="{{ user.username }}" />
+                                    <input type="hidden" name="patent_id" value="{{ pat1.publicationNumber }}" />
+                                    <button class="btn btn-outline-info" type="submit">Start Project</button>
+                                </form>
                             </a>
                         </div>
                         <div class="col">
                             <a href="#">
                                 <img class ="logo" src="{% static 'Searchapi/images/Opticaltweezers.jpg' %}" alt="logo">
+                                <p>{{ pat2.title }}</p>
+                                <form method="POST">{% csrf_token %}
+                                    <input type="hidden" name="user_id" value="{{ user.username }}" />
+                                    <input type="hidden" name="patent_id" value="{{ pat2.publicationNumber }}" />
+                                    <button class="btn btn-outline-info" type="submit">Start Project</button>
+                                </form>
                             </a>
                         </div>
                         <div class="col">
-                            <a href="#">
+                            <a href="{% url 'account:account-ipAssessment' %}">
                                 <img class ="logo" src="{% static 'Searchapi/images/CRISPR.jpg' %}" alt="logo">
+                                <p>{{ pat3.title }}</p>
+                                <form method="POST">{% csrf_token %}
+                                    <input type="hidden" name="user_id" value="{{ user.username }}" />
+                                    <input type="hidden" name="patent_id" value="{{ pat3.publicationNumber }}" />
+                                    <button class="btn btn-outline-info" type="submit">Start Project</button>
+                                </form>
                             </a>
                         </div>
                   </div>
