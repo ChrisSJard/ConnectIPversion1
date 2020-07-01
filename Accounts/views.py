@@ -76,13 +76,18 @@ def account_userprofile_view(request):
             return redirect('account:account-ipAssessment')
         else:
             messages.error(request, f'Patent has already been assigned!')
-
     return render(request, 'Accounts/userprofile.html', context)
 
 
 @login_required()
 def account_ipassessment_view(request):
-    form = PatentSummaryForm()
+    if request.method == 'POST':
+        form = PatentSummaryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('account:account-userprofile')
+    else:
+        form = PatentSummaryForm()
     return render(request, 'Accounts/ipAssessment.html', {'form': form})
 
 
