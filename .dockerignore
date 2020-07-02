@@ -1,0 +1,5 @@
+.git
+.cache
+/Lib/
+/Scripts/
+docker-compose.yml
