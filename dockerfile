@@ -36,7 +36,11 @@ RUN adduser -D user
 
 USER user
 
-CMD [ "entrypoint.sh" ]
+ENTRYPOINT [ "python", "manage.py" ]
+
+CMD [ "runserver", "0.0.0.0:8000" ]
+
+EXPOSE 8000
 
 
 
