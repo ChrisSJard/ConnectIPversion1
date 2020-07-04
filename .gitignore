@@ -1,3 +1,5 @@
 #file to ignore placed here
 /Lib/
 /.idea/
+docker-compose.yml
+.env
