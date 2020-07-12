@@ -105,81 +105,40 @@ class PatentSummary(models.Model):
         ('unknown', 'Unknown'),
     ]
 
-    # account = models.M=ForeignKey(User, on_delete=models.CASCADE)
-    startDate = models.DateTimeField()
-    # Administrative information
-    # Technology Title = string of word
+    account = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
+    startDate = models.DateField(null=True)
     ad1 = models.CharField(max_length=100)
-    # year patent = Year date
-    ad2 = models.PositiveIntegerField()
-    # patent status = small list of options, string word
+    ad2 = models.PositiveIntegerField(null=True)
     ad3 = models.CharField(max_length=9, choices=patentStatus)
-    # institution = drop-down list of options
     ad4 = models.CharField(max_length=100)
-    # patent link = url link
     ad5 = models.URLField(max_length=300)
-    # Product market fit speculation
-    # problem = String of words
     pr1 = models.CharField(max_length=100)
-    # problem difficulty = number lvl
     pr2 = models.CharField(max_length=5, choices=rating)
-    # solution = string of words
     pr3 = models.CharField(max_length=100)
-    # solution difficulty = number lvl
     pr4 = models.CharField(max_length=5, choices=rating)
-    # assists = string of words
     pr5 = models.CharField(max_length=100)
-    # peopleAssistsPresent = number
-    pr6 = models.PositiveIntegerField()
-    # peopleAssistsNextYear = number
-    pr7 = models.PositiveIntegerField()
-    # indirectWinners = string of words
+    pr6 = models.PositiveIntegerField(null=True)
+    pr7 = models.PositiveIntegerField(null=True)
     pr8 = models.CharField(max_length=100)
-    # valueAdded = string of words
     pr9 = models.CharField(max_length=100)
-    # characterizing the technology
-    # techChar = small list of options, string word
     tech1 = models.CharField(max_length=48, choices=techChar)
-    # techFeature = string words
     tech2 = models.CharField(max_length=100)
-    # workScientific = string words
     tech3 = models.CharField(max_length=100)
-    # workNonScientific = string words
     tech4 = models.CharField(max_length=100)
-    # stage of development
-    # technologyReadiness = small list of options, string word
     dev1 = models.CharField(max_length=50, choices=techReady)
-    # readinessJustify = string of words
     dev2 = models.CharField(max_length=100)
-    # forwardNext = string of words
     dev3 = models.CharField(max_length=100)
-    # Competitive landscape
-    # commercialAvailable = small list of options, string word
     comp1 = models.CharField(max_length=8, choices=choiceOptions)
-    # patentSolve = small list of options, string word
     comp2 = models.CharField(max_length=8, choices=choiceOptions)
-    # patentOverlap = small list of options, string word
     comp3 = models.CharField(max_length=8, choices=choiceOptions)
-    # patentAffect = string of words
     comp4 = models.CharField(max_length=100)
-    # currentSol = small list of options, string word
     comp5 = models.CharField(max_length=8, choices=choiceOptions)
-    # levelImprovement = small list of options, string word
     comp6 = models.CharField(max_length=12, choices=lvlImp)
-    # costSaving = small list of options, string word
     comp7 = models.CharField(max_length=8, choices=choiceOptions)
-    # Validation
-    # scientific = small list of options, string word
     val1 = models.CharField(max_length=200, choices=scientific)
-    # reproducibility = small list of options, string word
     val2 = models.CharField(max_length=200, choices=reproducibility)
-    # references = string of words
     val3 = models.CharField(max_length=100)
-    # Post Survey
-    # endTime = date time
-    endtime = models.DateTimeField()
-    # experience = number lvl
+    endtime = models.DateField(null=True)
     exp = models.CharField(max_length=5, choices=rating)
-    # feedback = string of words
-    feedback = models.TextField(max_length=300)
+    feedback = models.TextField(max_length=500)
 

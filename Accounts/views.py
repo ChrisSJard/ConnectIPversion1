@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from Accounts.models import DBPatent
-from .forms import UserRegisterForm, ProfileInfoForm, PatentSummaryForm, ProfileImageForm
+from .forms import UserRegisterForm, ProfileInfoForm, ProfileImageForm, AdministrativeInformationForm, ProductMarketSpeculationForm, CharacterizingTechnologyForm, StageDevelopmentForm, CompetitiveLandscapeForm, ValidationForm, PostSurveyForm, PatentSummaryForm
 
 
 def account_login_view(request):
@@ -76,13 +76,30 @@ def account_userprofile_view(request):
             return redirect('account:account-ipAssessment')
         else:
             messages.error(request, f'Patent has already been assigned!')
-
+            return redirect('account:account-userprofile')
     return render(request, 'Accounts/userprofile.html', context)
 
 
 @login_required()
 def account_ipassessment_view(request):
-    form = PatentSummaryForm()
-    return render(request, 'Accounts/ipAssessment.html', {'form': form})
+    if request.method == 'POST':
+        print(request.POST)
+        form = PatentSummaryForm(request.POST)
+        print ("reached")
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.account = request.user
+            instance.save()
+            print ("saved")
+        return redirect('account:account-userprofile')
+    else:
+        admform = AdministrativeInformationForm()
+        prodform = ProductMarketSpeculationForm()
+        charform = CharacterizingTechnologyForm()
+        stdevform = StageDevelopmentForm()
+        compform = CompetitiveLandscapeForm()
+        valform = ValidationForm()
+        survform = PostSurveyForm()
+    return render(request, 'Accounts/ipAssessment.html', {'administrativeform': admform, 'productmarketform': prodform,'characterisingTechnologyform': charform,'stagedevelopmentform': stdevform,'competitivelandscapeform': compform,'validationform': valform,'postsurveyform': survform,})
 
 

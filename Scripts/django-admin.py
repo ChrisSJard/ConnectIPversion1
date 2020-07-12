@@ -1,4 +1,4 @@
-#!d:\webdeveloper\connectip\scripts\python.exe
+#!D:\webdeveloper\ConnectIP\Scripts\python.exe
 from django.core import management
 
 if __name__ == "__main__":
