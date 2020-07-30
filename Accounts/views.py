@@ -49,6 +49,7 @@ def account_setprofile_view(request):
 
 @login_required()
 def account_userprofile_view(request):
+    #update to get all patents research topic related to user info
     patent1 = DBPatent.objects.get(id=1)
     patent2 = DBPatent.objects.get(id=2)
     patent3 = DBPatent.objects.get(id=3)
@@ -83,9 +84,7 @@ def account_userprofile_view(request):
 @login_required()
 def account_ipassessment_view(request):
     if request.method == 'POST':
-        print(request.POST)
         form = PatentSummaryForm(request.POST)
-        print ("reached")
         if form.is_valid():
             instance = form.save(commit=False)
             instance.account = request.user

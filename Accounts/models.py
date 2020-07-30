@@ -26,6 +26,10 @@ class DBPatent(models.Model):
     stageComplete = models.BooleanField()
     stageSelected = models.BooleanField()
     stageApproved = models.BooleanField()
+    category = models.CharField(max_length=100,blank=True)
+    type = models.CharField(max_length=100,blank=True)
+    treatment = models.CharField(max_length=100,blank=True)
+    operation = models.CharField(max_length=100,blank=True)
     creator = models.CharField(max_length=100, blank=True)
 
     def __str__(self):

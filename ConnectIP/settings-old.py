@@ -21,7 +21,6 @@ environ.Env.read_env()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -88,7 +87,6 @@ WSGI_APPLICATION = 'ConnectIP.wsgi.application'
 USE_AWS_POSTGRES= os.getenv('USE_AWS_POSTGRES') == 'TRUE'
 
 if USE_AWS_POSTGRES:
-    
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
