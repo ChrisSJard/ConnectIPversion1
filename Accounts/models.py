@@ -1,13 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
-from ConnectIP.storage_backends import PrivateMediaStorage
+from ConnectIP.storage_backends import PublicMediaStorage
 
 
 
 class Profile(models.Model):
     account = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', storage=PrivateMediaStorage())
+    image = models.ImageField(default='default.jpg', storage=PublicMediaStorage())
     qualification = models.CharField(max_length=100)
     research = models.CharField(max_length=100)
     location = CountryField()
