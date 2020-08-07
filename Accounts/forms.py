@@ -1,7 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django_countries.widgets import CountrySelectWidget
 from .models import Profile, PatentSummary
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 class UserRegisterForm(UserCreationForm):
@@ -13,13 +18,10 @@ class UserRegisterForm(UserCreationForm):
 
 
 class ProfileInfoForm(forms.ModelForm):
-    qualification = forms.CharField(max_length=100)
-    research = forms.CharField(max_length=100)
-    location = forms.CharField(max_length=100)
-
     class Meta:
         model = Profile
         fields = ['qualification', 'research', 'location']
+        widgets = {'location': CountrySelectWidget()}
 
 
 class ProfileImageForm(forms.ModelForm):
@@ -36,6 +38,7 @@ class AdministrativeInformationForm(forms.ModelForm):
             'ad1': 'Technology Title', 'ad2': 'Year Patented', 'ad3': 'Patent Status', 'ad4': 'Institution',
             'ad5': 'Patent link',
         }
+        widgets = {'startDate': DateInput()}
 
 
 class ProductMarketSpeculationForm(forms.ModelForm):
@@ -53,6 +56,7 @@ class ProductMarketSpeculationForm(forms.ModelForm):
             'pr8': 'Who are indirect winners?',
             'pr9': 'What is the value added by this technology overall?',
         }
+        widgets = {'pr2': forms.RadioSelect, 'pr4': forms.RadioSelect}
 
 
 class CharacterizingTechnologyForm(forms.ModelForm):
@@ -110,6 +114,7 @@ class PostSurveyForm(forms.ModelForm):
             'exp': 'How was your experience?',
             'feedback': 'Note any feedback to improve form',
         }
+        widgets = {'endtime': DateInput(), 'exp': forms.RadioSelect}
 
 
 class PatentSummaryForm(forms.ModelForm):
