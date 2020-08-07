@@ -6,13 +6,13 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="content-section col-md-6">
+            <div class="content-section col-md-8">
                 <form method="POST" id="msform" enctype="multipart/form-data">
                     {% csrf_token %}
                     <!-- fieldsets -->
                     <fieldset>
                         <h2 class="fs-title">Administrative Information</h2>
-                        <h3 class="fs-subtitle">Tell us something more about you</h3>
+                        <h3 class="fs-subtitle">Patent General Description</h3>
                         {{ administrativeform|crispy }}
                         <input type="button" name="next" class="next action-button" value="Next"/>
                     </fieldset>
@@ -60,7 +60,7 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <p>Relevant Urls related to topic</p>
             </div>
         </div>

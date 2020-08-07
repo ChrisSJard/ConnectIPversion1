@@ -1,13 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_countries.fields import CountryField
+from ConnectIP.storage_backends import PrivateMediaStorage
+S3 = False
+if S3:
+    uploader = "upload_to='profile_pics'"
+else:
+    uploader = "storage=PrivateMediaStorage()"
 
 
 class Profile(models.Model):
     account = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')  #change for production s3 storage
     qualification = models.CharField(max_length=100)
     research = models.CharField(max_length=100)
-    location = models.CharField(max_length=100)
+    location = CountryField()
     creator = models.BooleanField(default=False)
 
     def __str__(self):
@@ -117,9 +124,9 @@ class PatentSummary(models.Model):
     ad4 = models.CharField(max_length=100)
     ad5 = models.URLField(max_length=300)
     pr1 = models.CharField(max_length=100)
-    pr2 = models.CharField(max_length=5, choices=rating)
+    pr2 = models.CharField(max_length=5, choices=rating, null=False, blank=False, default='')
     pr3 = models.CharField(max_length=100)
-    pr4 = models.CharField(max_length=5, choices=rating)
+    pr4 = models.CharField(max_length=5, choices=rating, null=False, blank=False, default='')
     pr5 = models.CharField(max_length=100)
     pr6 = models.PositiveIntegerField(null=True)
     pr7 = models.PositiveIntegerField(null=True)
@@ -143,6 +150,6 @@ class PatentSummary(models.Model):
     val2 = models.CharField(max_length=200, choices=reproducibility)
     val3 = models.CharField(max_length=100)
     endtime = models.DateField(null=True)
-    exp = models.CharField(max_length=5, choices=rating)
+    exp = models.CharField(max_length=5, choices=rating, null=False, blank=False, default='')
     feedback = models.TextField(max_length=500)
 

@@ -5,3 +5,4 @@ django_crispy_forms
 boto3
 django-storages
 psycopg2
+django-countries
