@@ -1,17 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
-from ConnectIP.storage_backends import PrivateMediaStorage
-S3 = False
-if S3:
-    uploader = "upload_to='profile_pics'"
-else:
-    uploader = "storage=PrivateMediaStorage()"
+from ConnectIP.storage_backends import PublicMediaStorage
+
 
 
 class Profile(models.Model):
     account = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')  #change for production s3 storage
+    image = models.ImageField(default='default.jpg', storage=PublicMediaStorage())
     qualification = models.CharField(max_length=100)
     research = models.CharField(max_length=100)
     location = CountryField()

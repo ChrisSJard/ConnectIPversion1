@@ -28,10 +28,6 @@ RUN apk add --no-cache --virtual .build-deps \
 
 COPY . /app
 
-COPY ./dockerscripts /scripts
-
-RUN chmod +x /scripts/*
-
 RUN adduser -D user 
 
 USER user
