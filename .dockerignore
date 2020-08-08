@@ -9,4 +9,4 @@ media/
 static/
 entrypoint.sh
 pyvenv.cfg
-__pycache__
+__pycache__/
