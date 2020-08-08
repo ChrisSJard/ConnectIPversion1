@@ -4,3 +4,8 @@
 /Scripts/
 docker-compose.yml
 .env
+db.sqlite3
+media/
+static/
+entrypoint.sh
+pyvenv.cfg
