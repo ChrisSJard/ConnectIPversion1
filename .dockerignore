@@ -10,3 +10,4 @@ static/
 entrypoint.sh
 pyvenv.cfg
 __pycache__/
+UI/
