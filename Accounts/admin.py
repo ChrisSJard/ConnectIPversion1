@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Profile, PatentSummary, DBPatent
+from .models import Profile, CreatorSummary, Information
 
-# Register your models here.
+
 admin.site.register(Profile)
-admin.site.register(PatentSummary)
-admin.site.register(DBPatent)
+admin.site.register(Information)
+admin.site.register(CreatorSummary)
