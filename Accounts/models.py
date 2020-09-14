@@ -4,7 +4,6 @@ from django_countries.fields import CountryField
 from ConnectIP.storage_backends import PublicMediaStorage
 
 
-
 class Profile(models.Model):
     account = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', storage=PublicMediaStorage())
@@ -17,7 +16,7 @@ class Profile(models.Model):
         return f'{self.account.username} Profile'
 
 
-class DBPatent(models.Model):
+class Information(models.Model):
     publicationNumber = models.CharField(max_length=100)
     title = models.CharField(max_length=500)
     publicationDate = models.DateField()
@@ -148,4 +147,36 @@ class PatentSummary(models.Model):
     endtime = models.DateField(null=True)
     exp = models.CharField(max_length=5, choices=rating, null=False, blank=False, default='')
     feedback = models.TextField(max_length=500)
+
+
+class CreatorSummary(models.Model):
+    account = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    ad1 = models.CharField(max_length=200)
+    ad2 = models.CharField(max_length=200)
+    ad3 = models.CharField(max_length=200)
+    ad4 = models.CharField(max_length=200)
+    spd1 = models.CharField(max_length=200)
+    spd2 = models.CharField(max_length=200)
+    spd3 = models.CharField(max_length=200)
+    spd4 = models.CharField(max_length=200)
+    comp1 = models.CharField(max_length=200)
+    comp2 = models.CharField(max_length=200)
+    comp3 = models.CharField(max_length=200)
+    comp4 = models.CharField(max_length=200)
+    comp5 = models.CharField(max_length=200)
+    tech1 = models.CharField(max_length=200)
+    tech2 = models.CharField(max_length=200)
+    tech3 = models.CharField(max_length=200)
+    tech4 = models.CharField(max_length=200)
+    tech5 = models.CharField(max_length=200)
+    tech6 = models.CharField(max_length=200)
+    tech7 = models.CharField(max_length=200)
+    preImpact1 = models.CharField(max_length=200)
+    preImpact2 = models.CharField(max_length=200)
+    preImpact3 = models.CharField(max_length=200)
+    market1 = models.CharField(max_length=200)
+    market2 = models.CharField(max_length=200)
+    market3 = models.CharField(max_length=200)
+    market4 = models.CharField(max_length=200)
+    market5 = models.CharField(max_length=200)
 

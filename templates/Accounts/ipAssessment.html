@@ -4,64 +4,65 @@
 
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="content-section col-md-8">
+            <div class="content-section col-md-5">
                 <form method="POST" id="msform" enctype="multipart/form-data">
                     {% csrf_token %}
                     <!-- fieldsets -->
                     <fieldset>
                         <h2 class="fs-title">Administrative Information</h2>
                         <h3 class="fs-subtitle">Patent General Description</h3>
-                        {{ administrativeform|crispy }}
+                        {{ adForm|crispy }}
                         <input type="button" name="next" class="next action-button" value="Next"/>
                     </fieldset>
                     <fieldset>
-                        <h2 class="fs-title">Product-Market Fit Speculation</h2>
-                        <h3 class="fs-subtitle">Tell us something more about you</h3>
-                        {{ productmarketform|crispy }}
-                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                        <input type="button" name="next" class="next action-button" value="Next"/>
-                    </fieldset>
-                    <fieldset>
-                        <h2 class="fs-title">Characterizing the Technology</h2>
-                        <h3 class="fs-subtitle">Tell us something more about you</h3>
-                        {{ characterisingTechnologyform|crispy }}
-                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                        <input type="button" name="next" class="next action-button" value="Next"/>
-                    </fieldset>
-                    <fieldset>
-                        <h2 class="fs-title">Stage of Development</h2>
-                        <h3 class="fs-subtitle">Tell us something more about you</h3>
-                        {{ stagedevelopmentform|crispy }}
+                        <h2 class="fs-title">Development Stage</h2>
+                        <h3 class="fs-subtitle">Stage of patent development</h3>
+                        {{ spdForm|crispy }}
                         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         <input type="button" name="next" class="next action-button" value="Next"/>
                     </fieldset>
                     <fieldset>
                         <h2 class="fs-title">Competitive Landscape</h2>
-                        <h3 class="fs-subtitle">Tell us something more about you</h3>
-                        {{ competitivelandscapeform|crispy }}
+                        <h3 class="fs-subtitle">Tell us more about the patent </h3>
+                        {{ compForm|crispy }}
                         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         <input type="button" name="next" class="next action-button" value="Next"/>
                     </fieldset>
                     <fieldset>
-                        <h2 class="fs-title">Validation</h2>
-                        <h3 class="fs-subtitle">Tell us something more about you</h3>
-                        {{ validationform|crispy }}
+                        <h2 class="fs-title">Characterising the Technology</h2>
+                        <h3 class="fs-subtitle">Aspects of the patent</h3>
+                        {{ techForm|crispy }}
                         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         <input type="button" name="next" class="next action-button" value="Next"/>
                     </fieldset>
                     <fieldset>
-                        <h2 class="fs-title">Post Survey</h2>
-                        <h3 class="fs-subtitle">Fill in your credentials</h3>
-                        {{ postsurveyform|crispy }}
+                        <h2 class="fs-title">Predictive Impact</h2>
+                        <h3 class="fs-subtitle">How much of an impact will this patent have?</h3>
+                        {{ preImpactForm|crispy }}
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Product Market Fit</h2>
+                        <h3 class="fs-subtitle">Where do you think this patent fits in the current market?</h3>
+                        {{ marketForm|crispy }}
                         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         <input type="submit" name="submit" class="submit action-button" value="Submit"/>
                     </fieldset>
                 </form>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-7">
                 <p>Relevant Urls related to topic</p>
+                <ul>
+                    <li><a target="siteSwitch" href="https://www.ncbi.nlm.nih.gov/">Pubmed</a></li>
+                    <li><a target="siteSwitch" href="https://www.nccn.org/professionals/physician_gls/pdf/breast.pdf">link assist -Breast cancer</a></li>
+                    <li><a target="siteSwitch" href="https://www.nccn.org/professionals/physician_gls/pdf/nscl.pdf">link assist -Lung cancer</a></li>
+                <br><br>
+                <div class="embed-responsive embed-responsive-16by9"  style="height: 600px;">
+                    <iframe class="embed-responsive-item" name="siteSwitch" id="siteSwitch" src="https://www.ncbi.nlm.nih.gov/" allowfullscreen ></iframe>
+                </div>
             </div>
         </div>
     </div>

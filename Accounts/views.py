@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from Accounts.models import DBPatent
-from .forms import UserRegisterForm, ProfileInfoForm, ProfileImageForm, AdministrativeInformationForm, ProductMarketSpeculationForm, CharacterizingTechnologyForm, StageDevelopmentForm, CompetitiveLandscapeForm, ValidationForm, PostSurveyForm, PatentSummaryForm
+from Accounts.models import Information
+from .forms import UserRegisterForm, ProfileInfoForm, ProfileImageForm, PatentSummaryForm, AdministrativeInformationForm, PatentDevelopmentForm, CompetitiveLandscapeForm, TechnologyInformationForm, PredictiveImpactForm, ProductMarketForm
 
 
 def account_login_view(request):
@@ -50,9 +50,9 @@ def account_setprofile_view(request):
 @login_required()
 def account_userprofile_view(request):
     #update to get all patents research topic related to user info
-    patent1 = DBPatent.objects.get(id=1)
-    patent2 = DBPatent.objects.get(id=2)
-    patent3 = DBPatent.objects.get(id=3)
+    patent1 = Information.objects.get(id=1)
+    patent2 = Information.objects.get(id=2)
+    patent3 = Information.objects.get(id=3)
     context = {
         'pat1': patent1,
         'pat2': patent2,
@@ -89,16 +89,14 @@ def account_ipassessment_view(request):
             instance = form.save(commit=False)
             instance.account = request.user
             instance.save()
-            print ("saved")
         return redirect('account:account-userprofile')
     else:
-        admform = AdministrativeInformationForm()
-        prodform = ProductMarketSpeculationForm()
-        charform = CharacterizingTechnologyForm()
-        stdevform = StageDevelopmentForm()
+        adform = AdministrativeInformationForm()
+        spdform = PatentDevelopmentForm()
         compform = CompetitiveLandscapeForm()
-        valform = ValidationForm()
-        survform = PostSurveyForm()
-    return render(request, 'Accounts/ipAssessment.html', {'administrativeform': admform, 'productmarketform': prodform,'characterisingTechnologyform': charform,'stagedevelopmentform': stdevform,'competitivelandscapeform': compform,'validationform': valform,'postsurveyform': survform,})
+        techform = TechnologyInformationForm()
+        preImpactform = PredictiveImpactForm()
+        marketform = ProductMarketForm()
+    return render(request, 'Accounts/ipAssessment.html', {'adForm': adform, 'spdForm': spdform,'compForm': compform,'techForm': techform,'preImpactForm': preImpactform,'marketForm': marketform})
 
 

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django_countries.widgets import CountrySelectWidget
-from .models import Profile, PatentSummary
+from .models import Profile, CreatorSummary
 
 
 class DateInput(forms.DateInput):
@@ -30,6 +30,7 @@ class ProfileImageForm(forms.ModelForm):
         fields = ['image']
 
 
+'''
 class AdministrativeInformationForm(forms.ModelForm):
     class Meta:
         model = PatentSummary
@@ -117,6 +118,7 @@ class PostSurveyForm(forms.ModelForm):
         widgets = {'endtime': DateInput(), 'exp': forms.RadioSelect}
 
 
+
 class PatentSummaryForm(forms.ModelForm):
     class Meta:
         model = PatentSummary
@@ -156,4 +158,119 @@ class PatentSummaryForm(forms.ModelForm):
             'val1': 'Scientific basis', 'val2': 'Reproducibility', 'val3': 'References',
             'endtime': 'Completion date', 'exp': 'How was your experience?',
             'feedback': 'Note any feedback to improve form',
+        }
+'''
+
+
+class PatentSummaryForm(forms.ModelForm):
+    class Meta:
+        model = CreatorSummary
+        fields = ['ad1', 'ad2', 'ad3', 'ad4',
+                  'spd1', 'spd2', 'spd3', 'spd4',
+                  'comp1', 'comp2', 'comp3', 'comp4', 'comp5',
+                  'tech1', 'tech2', 'tech3', 'tech4', 'tech5', 'tech6', 'tech7',
+                  'preImpact1', 'preImpact2', 'preImpact3',
+                  'market1', 'market2', 'market3', 'market4', 'market5',
+                 ]
+
+        labels = {
+            'ad1': 'Institution/owner name?', 'ad2': 'Inventors Information?', 'ad3': 'Patent number?', 'ad4': 'Patent url?',
+            'spd1': "What is the current Patent's status?",
+            'spd2': "What is the patent's expiration date?",
+            'spd3': 'Are there any related patents?',
+            'spd4': "What is the patent's licence availability?",
+            'comp1': 'Type of IP?',
+            'comp2': 'Geographic coverage?',
+            'comp3': 'Patent owner resources/support availability?',
+            'comp4': 'What is the cost value estimate of the patent?',
+            'comp5': 'Mechanism to contact the seller/owner',
+            'tech1': 'Technology Category?',
+            'tech2': 'In two sentences or less, articulate the problem(s) this patent may solve in your own words in layman terms?',
+            'tech3': 'Does this currently have a solution?',
+            'tech4': 'Why does solving this problem matter?',
+            'tech5': 'Why does solving this problem differently matter?',
+            'tech6': 'In two sentences or less, articulate the utility of this IP to solve the problem in your own words in layman terms?',
+            'tech7': 'How does it work (without scientific jargon)?',
+            'preImpact1': 'Bio-marker name(s)', 'preImpact2': 'Who are the patients this will be used for?',
+            'preImpact3': 'Who are the direct and indirect stakeholders and what is the value add to each of them?',
+            'market1': 'What is the current Market size',
+            'market2': 'What work has been already completed for this technology?',
+            'market3': 'Scientific or other publications directly relevant to the IP?',
+            'market4': 'Summary of results/outcomes from studies directly relevant to the IP?',
+            'market5': 'Patent owner resources/support to progress development?',
+        }
+
+class AdministrativeInformationForm(forms.ModelForm):
+    class Meta:
+        model = CreatorSummary
+        fields = ['ad1', 'ad2', 'ad3', 'ad4']
+        labels = {
+            'ad1': 'Institution/owner name?',
+            'ad2': 'Inventors Information?',
+            'ad3': 'Patent number?',
+            'ad4': 'Patent url?',
+        }
+
+
+class PatentDevelopmentForm(forms.ModelForm):
+    class Meta:
+        model = CreatorSummary
+        fields = ['spd1', 'spd2', 'spd3', 'spd4']
+        labels = {
+            'spd1': "What is the current Patent's status?",
+            'spd2': "What is the patent's expiration date?",
+            'spd3': 'Are there any related patents?',
+            'spd4': "What is the patent's licence availability?",
+        }
+
+
+class CompetitiveLandscapeForm(forms.ModelForm):
+    class Meta:
+        model = CreatorSummary
+        fields = ['comp1', 'comp2', 'comp3', 'comp4', 'comp5']
+        labels = {
+            'comp1': 'Type of IP?',
+            'comp2': 'Geographic coverage?',
+            'comp3': 'Patent owner resources/support availability?',
+            'comp4': 'What is the cost value estimate of the patent?',
+            'comp5': 'Mechanism to contact the seller/owner',
+        }
+
+
+class TechnologyInformationForm(forms.ModelForm):
+    class Meta:
+        model = CreatorSummary
+        fields = ['tech1', 'tech2', 'tech3', 'tech4', 'tech5', 'tech6', 'tech7']
+        labels = {
+            'tech1': 'Technology Category?',
+            'tech2': 'In two sentences or less, articulate the problem(s) this patent may solve in your own words in layman terms?',
+            'tech3': 'Does this currently have a solution?',
+            'tech4': 'Why does solving this problem matter?',
+            'tech5': 'Why does solving this problem differently matter?',
+            'tech6': 'In two sentences or less, articulate the utility of this IP to solve the problem in your own words in layman terms?',
+            'tech7': 'How does it work (without scientific jargon)?',
+        }
+
+
+class PredictiveImpactForm(forms.ModelForm):
+    class Meta:
+        model = CreatorSummary
+        fields = ['preImpact1', 'preImpact2', 'preImpact3']
+        labels = {
+            'preImpact1': 'Bio-marker name(s)',
+            'preImpact2': 'Who are the patients this will be used for?',
+            'preImpact3': 'Who are the direct and indirect stakeholders and what is the value add to each of them?',
+        }
+
+
+class ProductMarketForm(forms.ModelForm):
+    class Meta:
+        model = CreatorSummary
+        fields = ['market1', 'market2', 'market3', 'market4', 'market5']
+        labels = {
+            'market1': 'What is the current Market size',
+            'market2': 'What work has been already completed for this technology?',
+            'market3': 'Scientific or other publications directly relevant to the IP?',
+            'market4': 'Summary of results/outcomes from studies directly relevant to the IP?',
+            'market5': 'Patent owner resources/support to progress development?',
         }
